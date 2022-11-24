@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 public class Record implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String category;
     private int recordTime;
     private String item;

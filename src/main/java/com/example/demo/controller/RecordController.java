@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,12 +25,7 @@ public class RecordController {
 
     @RequestMapping("/save")
     public boolean saveRecord(@RequestBody Record record) {
-        try {
-            recordRepo.save(record);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        return recordService.saveRecord(record);
     }
 
     @RequestMapping("/delete")
@@ -44,12 +40,6 @@ public class RecordController {
 
     @RequestMapping("/findRecords")
     public List<Record> findRecords(@RequestBody RecordForm recordForm) {
-        String filterKey = recordForm.getFilterKey();
-        List<Record> originalRecords = (filterKey == null || filterKey.trim().isEmpty()) ?
-                recordRepo.findAll() : recordRepo.findAll().stream().filter(record -> record.toString().contains(filterKey)).collect(Collectors.toList());
-
-        //todo need impl search case
-
-        return originalRecords;
+        return recordService.findRecords(recordForm);
     }
 }
