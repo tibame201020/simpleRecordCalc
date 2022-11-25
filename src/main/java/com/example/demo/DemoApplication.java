@@ -17,18 +17,18 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner run() {
-		return args -> {
-			Log log = LogFactory.getLog(this.getClass());
-
-			File electron_exe = ResourceUtils.getFile("electron/WinApp.exe");
-			String exe_path = electron_exe.getAbsolutePath();
-			log.info("exe_path = " + exe_path);
-
-			log.info("=== start exe ===");
-			Runtime.getRuntime().exec(exe_path);
-		};
-	}
+//	@Bean
+//	CommandLineRunner run() {
+//		return args -> {
+//			Log log = LogFactory.getLog(this.getClass());
+//
+//			File electron_exe = ResourceUtils.getFile("electron/WinApp.exe");
+//			String exe_path = electron_exe.getAbsolutePath();
+//			log.info("exe_path = " + exe_path);
+//
+//			log.info("=== start exe ===");
+//			Runtime.getRuntime().exec(exe_path);
+//		};
+//	}
 
 }

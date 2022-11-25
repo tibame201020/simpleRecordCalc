@@ -23,13 +23,12 @@ public class RecordServiceImpl implements RecordService {
     public boolean saveRecord(Record record) {
         try {
 
-            if (record.getId() == -1) {
+            if (record.getId() != null && record.getId() == -1) {
                 record.setId(null);
             }
 
             record.setRecordTime(checkDate(record.getRecordTime()));
             recordRepo.save(record);
-
             return true;
         } catch (Exception e) {
             return false;
